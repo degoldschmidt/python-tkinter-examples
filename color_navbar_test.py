@@ -175,6 +175,7 @@ def defocus(event):
 def init_styles():
     print('init styles')
     s = ttk.Style()
+    print(s.theme_use())
     s.configure('TFrame', background = light_grey)
     s.configure('TLabel', font = ('Open Sans', 12, 'roman'), background = light_grey)
     s.configure('TButton', padding = 2, font = ('Open Sans', 10, 'regular'))
