@@ -21,7 +21,14 @@ dark_purple = '#8700e6'
 light_purple = '#bf77ff'
 blue = '#0044ff'
 
-
+class TestApp(ttk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        ttk.Frame.__init__(self, parent, *args, **kwargs)
+        init_styles()
+        #self.parent = parent
+        #self.init_frames()
+        #self.grid_frames()
+        ttk.Label(parent, text = 'Experiments', style='TLabel').pack()
 
 class MainApplication(ttk.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -169,7 +176,7 @@ def init_styles():
     print('init styles')
     s = ttk.Style()
     s.configure('TFrame', background = light_grey)
-    #s.configure('TLabel', background = light_grey, font = ('Open Sans', 10, 'regular'))
+    s.configure('TLabel', font = ('Open Sans', 12, 'roman'), background = light_grey)
     s.configure('TButton', padding = 2, font = ('Open Sans', 10, 'regular'))
     s.configure('TEntry')
     s.configure('TLabelframe', background = light_grey)
@@ -189,9 +196,10 @@ def init_styles():
 
 if __name__ == '__main__':
     root = tk.Tk()
-    root.title('TTV')
+    root.title('Colored Navbar Test')
     #root.iconbitmap(default = 'icon.ico')
     root.geometry('1000x500')
     root.configure(bg = light_grey)
-    MainApplication(root).grid(row = 0, column = 0, sticky = (N, E, S, W))
+    #MainApplication(root).grid(row = 0, column = 0, sticky = (N, E, S, W))
+    TestApp(root).grid(row = 0, column = 0, sticky = (N, E, S, W))
     root.mainloop()
