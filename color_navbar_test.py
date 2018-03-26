@@ -28,7 +28,7 @@ class TestApp(ttk.Frame):
         #self.parent = parent
         #self.init_frames()
         #self.grid_frames()
-        ttk.Label(parent, text = 'Experiments', style='TLabel').pack()
+        ttk.Label(parent, text = 'Experiments', style='TLabel').grid(row=0, column=0)
 
 class MainApplication(ttk.Frame):
     def __init__(self, parent, *args, **kwargs):
