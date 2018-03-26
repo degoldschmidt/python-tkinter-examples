@@ -53,7 +53,7 @@ class MultiListbox(Frame):
             result.append(l.get(first, last))
         if last: return apply(map, [None] + result)
         return result
-        
+
     def index(self, index):
         self.lists[0].index(index)
 

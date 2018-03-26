@@ -3,8 +3,8 @@ from tkinter.ttk import *
 from tkinter import messagebox
 from tkinter import filedialog
 
-d = [ 'Name', 
-      '# males', 
+d = [ 'Name',
+      '# males',
       '# females',
       'Age males',
       'Age females',
@@ -21,13 +21,13 @@ class App():
         self.root = self.makeWindow()
         self.setSelect ()
         self.root.mainloop()
-    
+
     def makeWindow (self):
         root = Tk()
         root.title("Fly Logger v0.1")
         root.resizable(width=True, height=True)
         root.geometry("400x600")
-    
+
         # create a menu
         menu = Menu(root)
         root.config(menu=menu)
@@ -42,7 +42,7 @@ class App():
         filemenu.add_command(label="Export...")
         filemenu.add_separator()
         filemenu.add_command(label="Exit")
-    
+
         viewmenu = Menu(menu)
         menu.add_cascade(label="View", menu=viewmenu)
         viewmenu.add_command(label="View experiment")
@@ -54,7 +54,7 @@ class App():
 
         frame1 = Frame(root)
         frame1.pack()
-    
+
         Label(frame1, text="Please type in information about experimental run").grid(row=0, column = 0,  columnspan=2, sticky=W+E, pady=2)
         for ind, cats in enumerate(d):
             self.addCategory(frame1, cats, ind)
@@ -65,7 +65,7 @@ class App():
         #b2 = Button(frame2,text=" Load ",command=loadEntry)
         b3 = Button(frame2,text="Delete",command=self.deleteEntry)
         b4 = Button(frame2,text=" Edit ",command=self.updateEntry)
-        b1.pack(side=LEFT) 
+        b1.pack(side=LEFT)
         b3.pack(side=LEFT)
         b4.pack(side=LEFT)
 
@@ -77,30 +77,30 @@ class App():
         scroll.config (command=self.select.yview)
         scroll.pack(side=RIGHT, fill=Y)
         self.select.pack(side=LEFT,  fill=BOTH, expand=1)
-        
+
         frame4 = Frame(root)
         frame4.pack()
-        
-        
+
+
         return root
-    
+
     def restart (self):
         self.listFlies = []
         self.Vars = []
         self.Categories = []
         self.setSelect()
         self.root.destroy()
-        self.root = self.makeWindow() 
-        
+        self.root = self.makeWindow()
+
     def open_file(self):
-        name= filedialog.askopenfilename() 
+        name= filedialog.askopenfilename()
         print(name)
-        
+
     def save_file(self):
         print("Yeah")
-        
-    def doubleClicked (self, event) : 
-        self.loadEntry()   
+
+    def doubleClicked (self, event) :
+        self.loadEntry()
 
     def whichSelected (self) :
         if len(self.select.curselection()) > 0:
@@ -150,14 +150,14 @@ class Fly:
         self.data = []
         for vals in indata:
             self.data.append(vals)
-        
+
     def get(self, ind):
         return self.data[ind]
-    
+
     def set(self, ind, val):
         self.data[ind] = val
-        
-def main(): 
+
+def main():
     app = App()
     app.root.mainloop()
 
